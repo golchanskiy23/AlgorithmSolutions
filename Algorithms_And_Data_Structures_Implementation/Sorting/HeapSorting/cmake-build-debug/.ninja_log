@@ -1,0 +1,7 @@
+# ninja log v6
+96	1163	7599432692585080	CMakeFiles/HeapSorting.dir/main.cpp.obj	6dcdd051e4f9bec3
+1165	1333	7599432703266271	HeapSorting.exe	7ba84ff5b050aec7
+24	216	7599400238401888	CMakeFiles/HeapSorting.dir/heap.cpp.obj	97d61c131c38d8b4
+32	834	7599433228375746	build.ninja	8db36fd8d39c1a1a
+109	2364	7599433240348703	CMakeFiles/HeapSorting.dir/main.cpp.obj	6dcdd051e4f9bec3
+2365	2683	7599433263016926	HeapSorting.exe	7ba84ff5b050aec7
