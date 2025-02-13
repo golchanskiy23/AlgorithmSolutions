@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.30"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "CountingSort_DigitalSort",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "CountingSort_DigitalSort::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CountingSort_DigitalSort-Debug-1a2c0cd0eafa8bd496db.json",
+					"name" : "CountingSort_DigitalSort",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/LENOVO/PROJECTS/AlgorithmSolutions/Algorithms_And_Data_Structures_Implementation/Sorting/CountingSort_DigitalSort/cmake-build-debug",
+		"source" : "C:/Users/LENOVO/PROJECTS/AlgorithmSolutions/Algorithms_And_Data_Structures_Implementation/Sorting/CountingSort_DigitalSort"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
