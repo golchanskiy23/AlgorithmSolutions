@@ -1,27 +1,25 @@
 #include <iostream>
-#include <vector>
-#include <cmath>
-#include <limits.h>
-#include <set>
 #include <string>
+#include <vector>
+#include <set>
+#include <map>
 
-
-int main()
+int main() 
 {
-    freopen("blocks.in","r",stdin);
-    freopen("blocks.out","w",stdout);
-    int n; std::cin >> n;
-    std::vector<int> alphabet(26,0);
-    for(int i = 0; i < n; ++i) {
-        std::string s1, s2; std::cin >> s1 >> s2;
-        std::set<char> s;
-        for(auto& a : s1) s.insert(a);
-        for(auto& a : s2) s.insert(a);
-        for(auto& a : s)  alphabet[a-'a'] += 1;
-    }
-    for(auto& a : alphabet){
-        std::cout << a << '\n';
-    }
-
-    return 0;
+	freopen("blocks.in", "r", stdin);
+	freopen("blocks.out", "w", stdout);
+	int n; std::cin >> n;
+	std::vector<int> v(26,0);
+	for(int i = 0; i < n; ++i){
+	    std::string a,b; std::cin >> a >> b;
+	    std::map<char, int> m1,m2;
+	    for(auto& c:a) m1[c-'a']++;
+	    for(auto& c:b) m2[c-'a']++;
+	    for(int i = 0; i < 26; ++i){
+	        v[i] += std::max(m1[i], m2[i]);
+	    }
+	}
+	for(int i = 0; i < 26; ++i){
+	    std::cout << v[i] << '\n';
+	}
 }
