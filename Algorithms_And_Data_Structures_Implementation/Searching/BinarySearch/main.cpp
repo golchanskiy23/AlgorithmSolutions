@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <concepts>
+#include <stdexcept>
 
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -17,25 +18,31 @@ concept Comparable = requires(T a, T b) {
 };
 
 
-// return idx of vector or -1 if doesn't exist
+// return idx of first element in vector or -1 if doesn't exist
 // return min idx of target in vector
 template<class T>
 requires Comparable<T>
 ll binary_search(std::vector<T> vector, ll l, ll r, T target) {
-    if (l == r) {
-        if (vector[l] != target) return -1;
-        return l;
-    }
+    if (l > r) return -1;
     ll mid = l + (r-l)/2;
     T curr = vector[mid];
-    std::cout << l << " " << r << '\n';
-    if (target <= vector[mid]) return binary_search(vector, l,mid,target);
+    if(target == vector[mid]){
+    	ll currIdx = binary_search(vector, l,mid-1,target);
+	if(currIdx == -1) return mid;
+	return currIdx
+    }
+    if (target < vector[mid]) return binary_search(vector, l,mid-1,target);
     return binary_search(vector,mid+1, r, target);
 }
 
 int main() {
     std::vector<std::string> v{"a","b","bdc","bfg","bvf","c","derf"};
-    std::cout << binary_search<std::string>(v, 0,v.size()-1,"ca");
+    try{
+	std::cout << binary_search<std::string>(v, 0,v.size()-1,"ca");
+    }
+    catch(...){
+	std::cerr << "Something wrong!!!"  << '\n'; 
+    }
 }
 
 // TIP See CLion help at <a
