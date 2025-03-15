@@ -45,7 +45,7 @@ void data_structures::Heap<T>::insert(const T& x) {
   }
   heap[h_used++] = x;
   int i = h_used - 1;
-  while (i > 0 && heap[i] < heap[(i-1)/2]) {
+  while (i > 0 && heap[i] > heap[(i-1)/2]) {
     std::swap(heap[i], heap[(i-1)/2]);
     i = (i-1)/2;
   }
