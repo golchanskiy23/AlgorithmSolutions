@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"os"
 	"sort"
 	"strconv"
 	"strings"
@@ -362,9 +361,5 @@ func taskE(r *bufio.Reader) string {
 }
 
 func main() {
-	reader := bufio.NewReader(os.Stdin)
-	writer := bufio.NewWriter(os.Stdout)
-	defer writer.Flush()
-
-	fmt.Fprint(writer, taskA(reader))
+	
 }
