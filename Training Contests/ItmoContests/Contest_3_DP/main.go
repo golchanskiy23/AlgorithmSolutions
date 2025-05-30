@@ -497,6 +497,85 @@ func task8() {
 	fmt.Println()
 }
 
+type Rides struct {
+	R, Last int
+}
+
+func MinRides(a, b Rides) Rides {
+	if a.R < b.R {
+		return a
+	}
+	return b
+}
+
+func task11() {
+	scanner := bufio.NewReader(os.Stdin)
+	arr := InputNArray(scanner)
+	n, w := arr[0], arr[1]
+	weights, best := make([]int, n), make([]Rides, 1<<n)
+	parent := make([]int, 1<<n)
+	for i := 0; i < n; i++ {
+		weights[i] = InputN(scanner)
+	}
+	for i := 0; i < (1 << n); i++ {
+		best[i] = Rides{n + 1, 0}
+		parent[i] = -1
+	}
+	best[0] = Rides{0, 0}
+	for mask := 1; mask < (1 << n); mask++ {
+		for j := 0; j < n; j++ {
+			if mask&(1<<j) != 0 {
+				option := best[mask&^(1<<j)]
+				if option.Last+weights[j] <= w {
+					option.Last += weights[j]
+				} else {
+					option.R++
+					option.Last = weights[j]
+				}
+				if option.R < best[mask].R || (option.R == best[mask].R && option.Last < best[mask].Last) {
+					best[mask] = option
+					parent[mask] = j
+				}
+			}
+		}
+	}
+	r := best[(1<<n)-1].R + 1
+	fmt.Println(r)
+
+	mask := (1 << n) - 1
+	rides := [][]int{}
+
+	for mask > 0 {
+		currRide := []int{}
+		currRides := best[mask].R
+		currLast := best[mask].Last
+
+		for {
+			j := parent[mask]
+			currRide = append(currRide, j+1)
+			prevMask := mask &^ (1 << j)
+
+			if best[prevMask].R != currRides || best[prevMask].Last != currLast-weights[j] {
+				mask = prevMask
+				break
+			}
+			mask = prevMask
+			if mask == 0 {
+				break
+			}
+		}
+		rides = append(rides, currRide)
+	}
+
+	for i := len(rides) - 1; i >= 0; i-- {
+		fmt.Print(len(rides[i]))
+		for _, cow := range rides[i] {
+			fmt.Printf(" %d", cow)
+		}
+		fmt.Println()
+	}
+}
+
 func main() {
-	task8()
+	task11()
 }
